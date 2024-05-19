@@ -68,6 +68,12 @@ function ChatRoom({ userName, getOnlineUsers }) {
 
   const sendMessage = (e) => {
     e.preventDefault()
+
+    if (message.length < 1 || message.length > 1000) {
+      alert("Message must be between 1 and 1000 characters.");
+      return;
+    }
+
     socket.emit("send message", { message: message, name: userName })
     setMessageList((previousMessages) => [...previousMessages, { sender: userName, message: message, date: moment().format("DD MMM, YYYY h:mm A") }])
     e.target.firstChild.value = ""

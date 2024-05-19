@@ -19,6 +19,7 @@ const io = new Server (server, {
 const cookieParser = require("cookie-parser")
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static("./dist"))
 
 // method
 const insertMessage = require("./methods/message.js")
@@ -30,7 +31,6 @@ const login = require("./routers/login.js")
 const authorize = require("./routers/authorize.js")
 const logout = require("./routers/logout.js")
 const readMessages = require("./routers/readMessages.js")
-const message = require("./models/message.js")
 
 app.use(signup)
 app.use(login)
@@ -50,9 +50,13 @@ io.on("connection", (socket) => {
         socket.emit("makeUserOnline")
         socket.broadcast.emit("userConnected", name)
     })
-    socket.on("send message", (data) => {
-        socket.broadcast.emit("receive message", data)
-        insertMessage(data)
+    socket.on("send message", async (data) => {
+        try {
+            socket.broadcast.emit("receive message", data)
+            await insertMessage(data)
+        } catch (error) {
+            console.log(error)
+        }
     })
     socket.on("disconnect", () => {
         socket.broadcast.emit("userDisconnected", users[socket.id])

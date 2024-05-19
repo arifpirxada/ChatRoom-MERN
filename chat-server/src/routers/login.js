@@ -3,8 +3,16 @@ const router = new express.Router()
 const register = require("../models/registration")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const { body, validationResult } = require("express-validator")
 
-router.post("/api/login", async (req, res) => {
+router.post("/api/login", [
+    body('email').isEmail().normalizeEmail().withMessage("Invalid email!"),
+    body("password").isLength({ min: 4 }).trim().escape().withMessage("Invalid password!")
+], async (req, res) => {
+    const result = validationResult(req)
+    if (!result.isEmpty()) {
+        return res.send({ message: result.array()[0].msg })
+    }
     try {
         const user = await register.findOne({ email: req.body.email });
         if (!user) {
@@ -16,7 +24,7 @@ router.post("/api/login", async (req, res) => {
             return res.status(400).json({ message: "Wrong password!" });
         }
 
-        user.token = jwt.sign({id: user._id.toString()}, process.env.JWT_SECRET_KEY)
+        user.token = jwt.sign({ id: user._id.toString() }, process.env.JWT_SECRET_KEY)
 
         await user.save();
 
