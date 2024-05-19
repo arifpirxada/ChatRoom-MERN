@@ -48,13 +48,14 @@ dist-ssr
 *.sw?
 
 # Client-specific ignores
-client/node_modules
-client/dist
-client/.vscode/*
-client/.idea
+chat-client/node_modules
+chat-client/dist
+chat-client/.vscode/*
+chat-client/.idea
 
 # Server-specific ignores
-server/node_modules
-server/logs
-server/.vscode/*
-server/.idea
+chat-server/node_modules
+chat-server/logs
+chat-server/.vscode/*
+chat-server/.idea
+chat-server/.env
