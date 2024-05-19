@@ -51,8 +51,14 @@ You can now go to "http://localhost:3000" and access the web app
 
 Now, you can also access the web app from "http://localhost:5173"
 
+### Deployment
+
 ## Test Credentials
 For the deployed chat web app, you can use the following test credentials:  
-1. Email: first-demo, Password: first  
-2. Email: second-demo, Password: second  
-3. Email: third-demo, Password: third  
+1. Email: first-demo@gmail.com, Password: first  
+2. Email: second-demo@gmail.com, Password: second  
+3. Email: third-demo@gmail.com, Password: third  
+
+
+Deployed link:    
+https://chatroom-mern-production.up.railway.app/
