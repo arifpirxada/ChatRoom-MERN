@@ -19,4 +19,10 @@ html::-webkit-scrollbar {
 html {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    overflow: hidden;
+}
+
+#chat-box {
+    height: calc(100vh - 10rem);
+    overflow-y: scroll;
 }

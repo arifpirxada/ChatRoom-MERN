@@ -3,7 +3,7 @@ const router = new express.Router();
 const jwt = require("jsonwebtoken")
 const register = require("../models/registration")
 
-router.post("/signup", async (req, res) => {
+router.post("/api/signup", async (req, res) => {
   try {
     // checking for existing user
     const existingUser = await register.findOne({ email: req.body.email });
@@ -26,10 +26,10 @@ router.post("/signup", async (req, res) => {
         expires: new Date(Date.now() + 2 * 7 * 24 * 60 * 60 * 1000)
     })
 
-    res.status(201).json({ message: "signup successful" });
+    res.status(201).json({ message: "Signup successful!" });
   } catch (e) {
     console.log(e);
-    res.status(400).json({ message: "Internal server error" });
+    res.status(400).json({ message: "Server error! try later." });
   }
 });
 

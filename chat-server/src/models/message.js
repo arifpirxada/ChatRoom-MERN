@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const messageSchema = new mongoose.Schema({
     sender: String,
     message: String,
-    data: {
+    date: {
         type: String,
         default: Date.now
     }
