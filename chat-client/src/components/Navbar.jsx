@@ -48,7 +48,7 @@ function Navbar({ setLoginStatus, onlineUsers }) {
                 <h4 className='text-white text-center text-xl font-bold'>Online Users</h4><hr className='mt-2 mb-1 border-slate-600' />
                 <div className='h-4/6 text-white text-center overflow-y-scroll'>
                     { Object.values(onlineUsers).map((user, index) => (
-                        <p key={ index } className='mt-3 flex justify-center items-center gap-2'>{ user }<div className='w-2 h-2 rounded-full bg-green-500'></div></p>
+                        <p key={ index } className='mt-3 flex justify-center items-center gap-2'>{ user }<span className='w-2 h-2 rounded-full bg-green-500'></span></p>
                     )) }
                 </div>
                 <button onClick={ logout } type="button" className="text-white mt-8 bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Logout</button>
