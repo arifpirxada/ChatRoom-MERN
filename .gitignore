@@ -38,3 +38,5 @@ chat-server/logs
 chat-server/.vscode/*
 chat-server/.idea
 chat-server/.env
+
+Database
